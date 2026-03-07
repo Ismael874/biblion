@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biblion - Biblioteca Digital</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <a href="index.html" class="nav-logo">Biblion</a>
+                
+                <!-- Barra de búsqueda - Historia de Usuario: Como usuario quiero buscar libros para encontrar material disponible -->
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Buscar libros por título, autor o categoría..." class="search-input">
+                    <div id="search-results" class="search-results"></div>
+                </div>
+
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link active">Inicio</a></li>
+                    <li><a href="login.html" class="nav-link">Iniciar Sesión</a></li>
+                    <li><a href="register.html" class="nav-link">Registrarse</a></li>
+                    <li><button id="guest-btn" class="nav-link guest-btn">Entrar como Invitado</button></li>
+                    <li><a href="add-book.html" class="nav-link btn-add-book">+ Agregar Libro</a></li>
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Bienvenido a Biblion</h1>
+                <p class="hero-subtitle">Tu biblioteca digital personal</p>
+                <p class="hero-description">Accede a miles de libros en formato PDF, descubre nuevos autores y gestiona tu propia colección digital. Todo en un solo lugar.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">+1000</span>
+                        <span class="stat-label">Libros Disponibles</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">+500</span>
+                        <span class="stat-label">Autores</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">+50</span>
+                        <span class="stat-label">Categorías</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <h2>¿Qué puedes hacer en Biblion?</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">📚</div>
+                    <h3>Explorar Libros</h3>
+                    <p>Busca y descubre miles de títulos de todas las categorías</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📖</div>
+                    <h3>Leer Online</h3>
+                    <p>Visualiza libros directamente en tu navegador</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">⬇️</div>
+                    <h3>Descargar PDFs</h3>
+                    <p>Accede a los libros en formato PDF para leer sin conexión</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">📤</div>
+                    <h3>Compartir Conocimiento</h3>
+                    <p>Contribuye añadiendo nuevos libros a la biblioteca</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección de libros recientes -->
+        <section class="recent-books">
+            <h2>Libros Destacados</h2>
+            <div id="recent-books-grid" class="books-grid">
+                <!-- Los libros se cargarán dinámicamente -->
+            </div>
+        </section>
+
+        <!-- Sección de historial (visible solo para usuarios autenticados) -->
+        <section id="history-section" class="history-section" style="display: none;">
+            <h2>Tu Historial de Lectura</h2>
+            <div id="history-grid" class="books-grid">
+                <!-- Historial cargado dinámicamente -->
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 Biblion - Biblioteca Digital. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="js/api.js"></script>
+    <script src="js/auth.js"></script>
+    <script src="js/books.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/history.js"></script>
+</body>
+</html>
