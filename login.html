@@ -15,7 +15,7 @@
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
                     <li><a href="login.html" class="nav-link active">Iniciar Sesión</a></li>
                     <li><a href="register.html" class="nav-link">Registrarse</a></li>
-                    <li><button id="guest-btn" class="nav-link guest-btn">Entrar como Invitado</button></li>
+                    <li><a href="invitado.html" class="nav-link guest-btn">Entrar como Invitado</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,7 +27,7 @@
                 <h2>Iniciar Sesión</h2>
                 <p class="auth-subtitle">Accede a tu biblioteca personal</p>
                 
-                <!-- Tarea frontend: Implementar formulario de login con conexión a /auth/login -->
+                <!-- ⚠️ IMPORTANTE: El ID debe ser "login-form" no "formulario de inicio de sesión" -->
                 <form id="login-form" class="auth-form">
                     <div class="form-group">
                         <label for="email">Correo Electrónico</label>
@@ -49,9 +49,6 @@
         </div>
     </main>
 
-    <script src="/endpoints/Login-endpoint.js"></script>
-
-    <!--<script src="js/api.js"></script>
-    <script src="js/auth.js"></script>-->
+    <script src="endpoints/Login-endpoint.js"></script>
 </body>
 </html>
