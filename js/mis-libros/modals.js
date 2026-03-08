@@ -30,6 +30,7 @@ export function setupEditForm() {
         
         const bookId = document.getElementById('edit-book-id').value;
         const bookData = {
+            id: bookId,
             title: document.getElementById('edit-title').value,
             author: document.getElementById('edit-author').value,
             categoria: document.getElementById('edit-category').value,
