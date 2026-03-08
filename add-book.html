@@ -10,12 +10,11 @@
     <header>
         <nav class="navbar">
             <div class="nav-container">
-                <a href="index.html" class="nav-logo">Biblion</a>
+                <a href="mis-libros.html" class="nav-logo">Biblion</a>
                 <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Inicio</a></li>
-                    <li><a href="login.html" class="nav-link">Iniciar Sesión</a></li>
-                    <li><a href="register.html" class="nav-link">Registrarse</a></li>
-                    <li><button id="guest-btn" class="nav-link guest-btn">Entrar como Invitado</button></li>
+                    <li><a href="mis-libros.html" class="nav-link">Mis Libros</a></li>
+                    <li><a href="add-book.html" class="nav-link active">+ Agregar Libro</a></li>
+                    <li><button id="logout-btn" class="nav-link" style="background: var(--accent-color); color: white;">Cerrar Sesión</button></li>
                 </ul>
             </div>
         </nav>
@@ -26,8 +25,9 @@
             <h1>Agregar Nuevo Libro</h1>
             <p class="subtitle">Comparte conocimiento con la comunidad</p>
             
-            <!-- Tarea frontend: Implementar formulario para agregar libros y conexión con endpoint /book -->
-            <form id="add-book-form" class="add-book-form" enctype="multipart/form-data">
+            <div id="message-container" style="margin-bottom: 1rem;"></div>
+            
+            <form id="add-book-form" class="add-book-form">
                 <div class="form-row">
                     <div class="form-group">
                         <label for="title">Título del Libro *</label>
@@ -64,13 +64,18 @@
 
                 <div class="form-group">
                     <label for="description">Descripción *</label>
-                    <textarea id="estado" name="estado" required rows="5" placeholder="disponible"></textarea>
+                    <textarea id="description" name="description" required rows="5" placeholder="Descripción del libro..."></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="estado">Estado</label>
+                    <input type="text" id="estado" name="estado" value="disponible" placeholder="disponible">
                 </div>
 
                 <div class="form-group">
                     <label for="pdf">Archivo PDF (opcional)</label>
                     <div class="file-input-container">
-                        <input type="file" id="pdf" name="pdf" accept=".pdf" >
+                        <input type="file" id="pdf" name="pdf" accept=".pdf">
                         <small>Formatos aceptados: PDF (máx. 50MB)</small>
                     </div>
                 </div>
@@ -91,9 +96,37 @@
         </div>
     </main>
 
-    <script src="./endpoints/AddBook-endpoint.js"></script>
-    <!--<script src="js/api.js"></script>
-    <script src="js/auth.js"></script>
-    <script src="js/books.js"></script>-->
+    <script>
+        // Logout
+        document.getElementById('logout-btn')?.addEventListener('click', () => {
+            localStorage.removeItem('token');
+            localStorage.removeItem('user');
+            localStorage.removeItem('guest');
+            window.location.href = 'index.html';
+        });
+
+        // Mostrar mensaje informativo sin deshabilitar el botón
+        document.addEventListener('DOMContentLoaded', () => {
+            const token = localStorage.getItem('token');
+            const isGuest = localStorage.getItem('guest');
+            const messageContainer = document.getElementById('message-container');
+            
+            if (!token || isGuest === 'true') {
+                messageContainer.innerHTML = `
+                    <div style="background: #fff3cd; color: #856404; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; border: 1px solid #ffeeba;">
+                        <strong>⚠️ Modo invitado:</strong> Puedes agregar libros, pero si no inicias sesión, <strong>no podrás editarlos o eliminarlos después</strong>.
+                        <a href="login.html" style="color: #856404; font-weight: bold; text-decoration: underline; margin-left: 0.5rem;">Iniciar Sesión</a>
+                    </div>
+                `;
+            } else {
+                messageContainer.innerHTML = `
+                    <div style="background: #d4edda; color: #155724; padding: 1rem; border-radius: 5px; margin-bottom: 1rem; border: 1px solid #c3e6cb;">
+                        <strong>✅ Sesión iniciada:</strong> Tus libros se guardarán en tu cuenta.
+                    </div>
+                `;
+            }
+        });
+    </script>
+    <script src="endpoints/AddBook-endpoint.js"></script>
 </body>
 </html>

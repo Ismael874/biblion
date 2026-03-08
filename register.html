@@ -15,7 +15,7 @@
                     <li><a href="index.html" class="nav-link">Inicio</a></li>
                     <li><a href="login.html" class="nav-link">Iniciar Sesión</a></li>
                     <li><a href="register.html" class="nav-link active">Registrarse</a></li>
-                    <li><button id="guest-btn" class="nav-link guest-btn">Entrar como Invitado</button></li>
+                    <li><a href="invitado.html" class="nav-link guest-btn">Entrar como Invitado</a></li>
                 </ul>
             </div>
         </nav>
@@ -27,7 +27,7 @@
                 <h2>Crear Cuenta</h2>
                 <p class="auth-subtitle">Únete a la comunidad de Biblion</p>
                 
-                <!-- Tarea frontend: Implementar formulario de registro con conexión a /auth/register -->
+                <!-- ⚠️ El ID debe ser "register-form" -->
                 <form id="register-form" class="auth-form">
                     <div class="form-group">
                         <label for="name">Nombre Completo</label>
@@ -63,9 +63,6 @@
             </div>
         </div>
     </main>
-    <script src="./endpoints/Register-endpoint.js"></script>
-
-    <!--<script src="js/api.js"></script>
-    <script src="js/auth.js"></script>-->
+    <script src="endpoints/Register-endpoint.js"></script>
 </body>
 </html>
